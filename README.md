@@ -1,0 +1,1 @@
+# auto-script-centos-6
