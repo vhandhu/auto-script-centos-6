@@ -240,10 +240,10 @@ service fail2ban restart
 chkconfig fail2ban on
 
 # install squid
-yum -y install squid
-wget -O /etc/squid/squid.conf "https://raw.github.com/vhandhu/auto-script-centos-6/master/squid-centos.conf"
-sed -i $MYIP2 /etc/squid/squid.conf;
-service squid restart
+yum -y install squid3
+wget -O /etc/squid3/squid.conf "https://raw.github.com/vhandhu/auto-script-centos-6/master/squid3-centos.conf"
+sed -i $MYIP2 /etc/squid3/squid.conf;
+service squid3 restart
 chkconfig squid on
 
 # install webmin
