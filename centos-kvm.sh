@@ -3,22 +3,8 @@
 #           Original Script By            
 #   Jajan Online - Whats App 08994422537  
 # ========================================
-
 # initialisasi var
 OS=`uname -p`;
-
-# data pemilik server
-read -p "Nama pemilik server: " namap
-read -p "Nomor HP atau Email pemilik server: " nhp
-
-# ubah hostname
-echo "Hostname Anda saat ini $HOSTNAME"
-read -p "Masukkan hostname atau nama untuk server ini: " hnbaru
-echo "HOSTNAME=$hnbaru" >> /etc/sysconfig/network
-hostname "$hnbaru"
-echo "Hostname telah diganti menjadi $hnbaru"
-read -p "Maks login user (contoh 1 atau 2): " llimit
-echo "Proses instalasi script dimulai....."
 
 # update software server
 yum update -y
@@ -116,7 +102,7 @@ echo "" >> .bash_profile
 echo 'echo -e "\e[94m ========================================================== "' >> .bash_profile
 echo 'echo -e "\e[94m Selamat datang di server $HOSTNAME                         "' >> .bash_profile
 echo 'echo -e "\e[94m Script by Jajan Online, Whats App 08994422537              "' >> .bash_profile
-echo 'echo -e "\e[94m Ketik menu untuk menampilkan daftar perintah                  "' >> .bash_profile          
+echo 'echo -e "\e[94m Ketik menu untuk menampilkan daftar perintah               "' >> .bash_profile
 echo 'echo -e "\e[94m ========================================================== "' >> .bash_profile
 
 # install webserver
@@ -215,7 +201,7 @@ chkconfig dropbear on
 
 # Banner
 rm /etc/issue.net
-wget -O /etc/issue.net "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/issue.net"
+wget -O /etc/issue.net "https://raw.githubusercontent.com/vhandhu/auto-script-debian-6/master/issue.net"
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 service sshd restart
@@ -240,18 +226,16 @@ service fail2ban restart
 chkconfig fail2ban on
 
 # install squid
-yum -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.github.com/vhandhu/auto-script-centos-6/master/squid3-centos.conf"
-sed -i $MYIP2 /etc/squid3/squid.conf;
-service squid3 restart
+yum -y install squid
+mv /etc/squid/squid.conf /etc/squid.conf.bak
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/squid-centos.conf"
+sed -i $MYIP2 /etc/squid/squid.conf;
+service squid restart
 chkconfig squid on
 
 # install webmin
 cd
-wget http://www.webmin.com/jcameron-key.asc
-wget http://www.webmin.com/download/rpm/webmin-current.rpm
-rpm --import jcameron-key.asc
-rpm -Uvh webmin-*.rpm
+wget http://prdownloads.sourceforge.net/webadmin/webmin-1.831-1.noarch.rpm
 yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty
 rpm -U webmin*
 rm -f webmin*
@@ -274,24 +258,25 @@ chmod +x /usr/bin/bmon
 #echo "  sleep 20" >> /usr/bin/autokill
 #echo "  done" >> /usr/bin/autokill
 
-# download script
+# downlaod script
 cd /usr/bin
 wget -O menu "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/menu.sh"
-wget -O buat "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/buat.sh"
-wget -O tambah "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/tambah.sh"
-wget -O hapus "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/hapus.sh"
 wget -O cek "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/cek.sh"
-wget -O member "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/member.sh"
 wget -O expired "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/expired.sh"
+wget -O buat "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/buat.sh"
+wget -O hapus "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/hapus.sh"
+wget -O tambah "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/tambah.sh"
+wget -O member "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/member.sh" 
 
-# Set Permissions
+# sett permission
 chmod +x menu
-chmod +x buat
-chmod +x tambah
-chmod +x hapus
 chmod +x cek
-chmod +x member
+chmod +x hapus
 chmod +x expired
+chmod +x buat
+chmod +x member
+chmod +x limit
+chmod +x tambah
 
 # cron
 cd
@@ -337,7 +322,6 @@ echo -e "\e[94m                    Services                               "
 echo -e "\e[94m                                                           "
 echo -e "\e[94m    OpenSSH        :   "$opensshport
 echo -e "\e[94m    Dropbear       :   "$dropbearport
-echo -e "\e[94m    SSL            :   "$stunnel4port
 echo -e "\e[94m    OpenVPN        :   "$openvpnport
 echo -e "\e[94m    Port Squid     :   "$squidport
 echo -e "\e[94m    Nginx          :   "$nginxport
@@ -353,5 +337,6 @@ echo -e "\e[94m    DDOS Deflate   :   [ON]                                "
 echo -e "\e[94m    LibXML Parser  :   {ON]                                "
 echo -e "\e[0m                                                            "
 echo -e "\e[94m =========================================================="
-echo -e "\e[0m                                                            "
+echo -e "\e[0m"
+
 rm -f /root/centos-kvm.sh

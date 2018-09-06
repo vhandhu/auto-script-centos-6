@@ -4,7 +4,7 @@
 #   Jajan Online - Whats App 08994422537  
 # ========================================
 
-echo -e "\e[0m                                                   "
+echo -e "\e[0m                                                            "
 echo -e "\e[94m =========================================================="
 echo -e "\e[94m           AutoScriptVPS by JAJAN ONLINE                   "
 echo -e "\e[94m              Whats App - 08994422537                      "
@@ -17,7 +17,7 @@ echo -e "\e[93m            [5]  Member"
 echo -e "\e[93m            [6]  Expired"
 echo -e "\e[93m            [x]  Exit"
 echo -e "\e[0m                                                   "
-read -p "                 Select From Options [1-6 or x] :  " Menu
+read -p "\e[93m           Select From Options [1-6 or x] :  " Menu
 echo -e "\e[0m                                                   "
 echo -e "\e[94m ==========================================================\e[0m"
 
@@ -44,10 +44,6 @@ case $Menu in
 		;;
 		6)
 		expired
-		exit
-		;;
-		7)
-		reboot
 		exit
 		;;
 		x)
