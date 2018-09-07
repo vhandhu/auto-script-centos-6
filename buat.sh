@@ -5,18 +5,18 @@
 # ========================================
 
 echo " ========================================================== "
-echo "                        Membuat Akun                        "
+echo "                      Membuat Akun                          "
 echo " ========================================================== "
 echo ""
-read -p "         Isikan username: " username
+read -p "          Isikan username: " username
 
 egrep "^$username" /etc/passwd >/dev/null
 if [ $? -eq 0 ]; then
-	echo "Username [$username] sudah ada!"
+	echo "          Username [$username] sudah ada!"
 	exit 1
 else
-	read -p "         Isikan password akun [$username]: " password
-	read -p "         Berapa hari akun [$username] aktif: " AKTIF
+	read -p "          Isikan password akun [$username]: " password
+	read -p "          Berapa hari akun [$username] aktif: " AKTIF
 
 MYIP=$(wget -qO- ipv4.icanhazip.com)
 today="$(date +"%Y-%m-%d")"

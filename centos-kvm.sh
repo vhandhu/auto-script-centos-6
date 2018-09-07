@@ -3,6 +3,7 @@
 #           Original Script By            
 #   Jajan Online - Whats App 08994422537  
 # ========================================
+
 # initialisasi var
 OS=`uname -p`;
 
@@ -262,11 +263,15 @@ chmod +x /usr/bin/bmon
 cd /usr/bin
 wget -O menu "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/menu.sh"
 wget -O cek "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/cek.sh"
-wget -O expired "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/expired.sh"
 wget -O buat "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/buat.sh"
 wget -O hapus "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/hapus.sh"
+wget -O hapusxp "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/hapusxp.sh"
+wget -O expired "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/expired.sh"
+wget -O listxp "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/listxp.sh"
 wget -O tambah "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/tambah.sh"
+wget -O ganti "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/ganti.sh"
 wget -O member "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/member.sh" 
+
 
 # sett permission
 chmod +x menu
@@ -275,8 +280,10 @@ chmod +x hapus
 chmod +x expired
 chmod +x buat
 chmod +x member
-chmod +x limit
 chmod +x tambah
+chmod +x ganti
+chmod +x listxp
+chmod +x hapusxp
 
 # cron
 cd
@@ -308,7 +315,7 @@ chkconfig crond on
 opensshport="$(netstat -ntlp | grep -i ssh | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 dropbearport="$(netstat -nlpt | grep -i dropbear | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 openvpnport="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
-squidport="$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}')"
+squidport="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}')"
 nginxport="$(netstat -nlpt | grep -i nginx| grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 
 # Info

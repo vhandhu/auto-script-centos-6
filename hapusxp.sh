@@ -38,7 +38,7 @@ do
 		fi
 	else
 		echo " User : $username Expire tanggal : $tgl $bulantahun" >> /root/expireduser.txt
-		passwd -l $username
+		userdel $username
 	fi
 done
 
