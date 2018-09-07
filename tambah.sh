@@ -35,7 +35,7 @@ echo -e " Host           : "$MYIP
 echo -e " Port OpenSSH   : "$opensshport                                        
 echo -e " Port Dropbear  : "$dropbearport                             
 echo -e " Port Squid     : "$squidport                                 
-echo -e " Config OpenVPN : $MYIP:3128/client.ovpn                    "         
+echo -e " Config OpenVPN : $MYIP:81/client.ovpn                    "         
 echo -e " Username       : $username                                 "
 echo -e " ========================================================== "
 echo -e " Aktif Sampai   : $expire                                  "

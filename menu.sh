@@ -20,7 +20,7 @@ echo -e "\e[93m            [8]  Member"
 echo -e "\e[93m            [9]  Cek"
 echo -e "\e[93m            [x]  Exit"
 echo -e "\e[0m                                                            "       
-read -p "\e[93m           Select From Options [1-9 or x] :  " Menu
+read -p "          Select From Options [1-9 or x] :  " Menu
 echo -e "\e[0m                                                            "
 echo -e "\e[94m ==========================================================\e[0m"
 

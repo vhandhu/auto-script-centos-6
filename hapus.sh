@@ -13,7 +13,7 @@ read -p "         Hapus user : " username
 egrep "^$username" /etc/passwd >/dev/null
 if [ $? -eq 0 ]; then
         userdel -f $username
-        echo -e "User $username telah dihapus."
+        echo -e "          User $username telah dihapus."
 else
-        echo -e "GAGAL: User $username tidak ada."
+        echo -e "          GAGAL: User $username tidak ada."
 fi

@@ -7,10 +7,10 @@
 # go to root
 cd
 expired
-clear
+
 
 echo -e " ===================== Akun Expired ===================== "
-echo ""
+echo " "
 
 cat /root/expireduser.txt
 echo ""
