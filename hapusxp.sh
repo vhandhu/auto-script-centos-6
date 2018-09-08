@@ -39,6 +39,8 @@ do
 	else
 		echo " User : $username Expire tanggal : $tgl $bulantahun" >> /root/expireduser.txt
 		userdel $username
+		echo ""
+		echo "          semua user expired berhasil dihapus!"
 	fi
 done
 
