@@ -271,7 +271,7 @@ wget -O listxp "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/m
 wget -O tambah "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/tambah.sh"
 wget -O ganti "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/ganti.sh"
 wget -O member "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/member.sh" 
-
+wget -O limit "https://raw.githubusercontent.com/vhandhu/auto-script-centos-6/master/limit.sh" 
 
 # sett permission
 chmod +x menu
@@ -284,14 +284,14 @@ chmod +x tambah
 chmod +x ganti
 chmod +x listxp
 chmod +x hapusxp
+chmod +x limit
 
 # cron
 cd
-service crond start
-chkconfig crond on
-service crond stop
 echo "0 0 * * * root /bin/sh /usr/bin/expired" > /etc/cron.d/expired
 echo "0 0 * * * root /bin/sh /usr/bin/reboot" > /etc/cron.d/reboot
+service crond start
+chkconfig crond on
 
 # set time GMT +7
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
