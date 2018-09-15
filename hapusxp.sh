@@ -40,7 +40,7 @@ do
 		echo " User : $username Expire tanggal : $tgl $bulantahun" >> /root/expireduser.txt
 		userdel $username
 		echo ""
-		echo "          semua user expired berhasil dihapus!"
+		echo "          user expired $username berhasil dihapus!"
 	fi
 done
 

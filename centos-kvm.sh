@@ -289,7 +289,7 @@ chmod +x limit
 # cron
 cd
 echo "10 0 * * * root /bin/sh /usr/bin/expired" > /etc/cron.d/expired
-echo "10 0 * * * root /bin/sh /usr/bin/reboot" > /etc/cron.d/reboot
+echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 service crond start
 chkconfig crond on
 

@@ -18,7 +18,7 @@ if [ $? -eq 0 ]; then
 	
 	expiredate=$(chage -l $username | grep "Account expires" | awk -F": " '{print $2}')
 	today=$(date -d "$expiredate" +"%Y-%m-%d")
-	expire=$(date -d "$today + $AKTIF days" +"%Y-%m-%d")
+	expire=$(date -d "$AKTIF days" +"%Y-%m-%d")
 	chage -E "$expire" $username
 	passwd -u $username
 	#useradd -M -N -s /bin/false -e $expire $username
